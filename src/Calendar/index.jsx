@@ -62,7 +62,7 @@ const Calendar = ({ size }) => {
 
   const [calendarDays, setCalendarDays] = useState([]);
 
-  const renderCalendarDays = () => {
+  useEffect(() => {
     // Lógica de Cálculo dos dias do mês
 
     // 1. Cálculos essenciais
@@ -85,10 +85,6 @@ const Calendar = ({ size }) => {
     }
 
     setCalendarDays(daysArr);
-  };
-
-  useEffect(() => {
-    renderCalendarDays();
   }, [nav]);
 
   return (
