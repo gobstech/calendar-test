@@ -1,0 +1,175 @@
+/* Estilos globais e reset */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    display: flex; /* Usado para centralizar o container na página */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Garante que o body ocupa a altura total da viewport */
+    background-color: #f4f4f9;
+}
+
+.wrapper {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* 1. Container Principal */
+main.container {
+  width: 100%; /* Largura um pouco maior em telas menores */
+  max-width: 1080px; /* Limita a largura em telas maiores */
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+main.container.tiny {
+  min-width: 370px;
+  width: 100%;
+  max-width: 600px;
+  min-height: 390px;
+  height: 100%;
+  max-height: 600px;
+}
+
+main.container.tiny .header .monthDisplay {
+  font-size: clamp(1rem, 0.771rem + 1.143vw, 1.5rem);
+}
+
+@media screen and (max-width: 375px) {
+  main.container.tiny .header .monthDisplay {
+    margin-left: 5px;
+    margin-bottom: 5px;
+  }
+}
+
+main.container.tiny .header div button#backButton,
+main.container.tiny .header div button#nextButton {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 5px 10px;
+}
+
+main.container.tiny #weekdays div {
+  font-size: 12px;
+}
+
+main.container.tiny #calendar .day, 
+main.container.tiny #calendar .padding {
+  font-size: 0.75rem;
+  max-width: 100%;
+  width: 100%;
+  min-height: 30px;
+  height: auto;
+  margin: 0 auto;
+}
+  
+  /* 2. Cabeçalho (Mês e Botões) */
+.header {
+  display: flex;
+  justify-content: space-between; /* Espaça o mês e os botões */
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #eee;
+}
+
+main.container.tiny .header {
+  margin-bottom: 0px;
+}
+
+@media screen and (max-width: 375px) {
+  main.container.tiny .header {
+    flex-direction: column;
+    justify-content: left;
+    align-items: flex-start;
+    margin: 0;
+  }
+}
+
+.monthDisplay {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #333;
+}
+
+/* 3. Estilo dos Botões */
+#backButton, #nextButton {
+    background-color: #60a5ef;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-left: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: background-color 0.2s;
+    font-family: inherit;
+}
+
+#backButton:hover, #nextButton:hover {
+    background-color: #0056b3;
+}
+
+/* 4. Dias da Semana */
+#weekdays {
+    display: grid;
+    /* Define 7 colunas de tamanho igual */
+    grid-template-columns: repeat(7, 1fr); 
+    gap: 5px;
+    margin-bottom: 10px;
+    color: #777;
+    font-weight: bold;
+    text-align: center;
+}
+
+#weekdays div {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+/* 5. Grade do Calendário (Onde os dias do mês serão adicionados via JS) */
+div#calendar {
+    display: grid;
+    /* O grid do calendário deve espelhar o grid dos dias da semana */
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+/* Estilo para cada célula de dia (a ser criado no JavaScript, mas já definimos o estilo base) */
+.day {
+    height: 100px; /* Altura para as células */
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 2px solid #e0e0e0;
+    border-radius: 5px;
+    text-align: left;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: border-color box-shadow outline 0.2s ease-in-out;
+}
+
+.day:hover {
+    height: 100px; /* Altura para as células */
+    border-color: #60a5ef;
+    box-shadow: 0 0 4px #60a5ef90;
+    outline: 2px #60a5ef;
+    background-color: #e6f7ff;
+    transform: translateY(-2px);
+    transition: border-color box-shadow outline 0.2s ease-in-out;
+}
+
+/* Estilo para dias de preenchimento (dias do mês anterior/próximo) */
+.padding {
+    background-color: #fafafa;
+    color: #ccc;
+    cursor: default;
+}
+
+.padding:hover {
+    background-color: #fafafa;
+}
